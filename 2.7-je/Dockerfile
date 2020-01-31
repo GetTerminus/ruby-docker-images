@@ -1,5 +1,5 @@
-# Modified from https://github.com/docker-library/ruby/blob/82eecb7596c3cb466dd87d4b0350d189a330b925/2.6/stretch/Dockerfile
-FROM buildpack-deps:stretch
+# https://github.com/docker-library/ruby/blob/82eecb7596c3cb466dd87d4b0350d189a330b925/2.7/buster/Dockerfile
+FROM buildpack-deps:buster
 
 # skip installing gem documentation
 RUN set -eux; \
@@ -9,9 +9,9 @@ RUN set -eux; \
 		echo 'update: --no-document'; \
 	} >> /usr/local/etc/gemrc
 
-ENV RUBY_MAJOR 2.6
-ENV RUBY_VERSION 2.6.5
-ENV RUBY_DOWNLOAD_SHA256 d5d6da717fd48524596f9b78ac5a2eeb9691753da5c06923a6c31190abe01a62
+ENV RUBY_MAJOR 2.7
+ENV RUBY_VERSION 2.7.0
+ENV RUBY_DOWNLOAD_SHA256 27d350a52a02b53034ca0794efe518667d558f152656c2baaf08f3d0c8b02343
 
 # some of ruby's build scripts are written in ruby
 #   we purge system ruby later to make sure our final image uses what we just built
@@ -22,9 +22,9 @@ RUN set -eux; \
 	apt-get install -y --no-install-recommends \
 		bison \
 		dpkg-dev \
+    libjemalloc-dev \
 		libgdbm-dev \
 		ruby \
-    libjemalloc-dev  \
 	; \
 	rm -rf /var/lib/apt/lists/*; \
 	\
