@@ -1,5 +1,5 @@
-# Modified from https://github.com/docker-library/ruby/blob/82eecb7596c3cb466dd87d4b0350d189a330b925/2.6/stretch/Dockerfile
-FROM buildpack-deps:stretch
+# https://github.com/docker-library/ruby/blob/921f2e68671461785e822aa437b68433278263b9/3.0/buster/Dockerfile
+FROM buildpack-deps:buster
 
 # skip installing gem documentation
 RUN set -eux; \
@@ -9,9 +9,10 @@ RUN set -eux; \
 		echo 'update: --no-document'; \
 	} >> /usr/local/etc/gemrc
 
-ENV RUBY_MAJOR 2.6
-ENV RUBY_VERSION 2.6.5
-ENV RUBY_DOWNLOAD_SHA256 364b143def360bac1b74eb56ed60b1a0dca6439b00157ae11ff77d5cd2e92291
+ENV LANG C.UTF-8
+ENV RUBY_MAJOR 3.0
+ENV RUBY_VERSION 3.0.0
+ENV RUBY_DOWNLOAD_SHA256 68bfaeef027b6ccd0032504a68ae69721a70e97d921ff328c0c8836c798f6cb1
 
 # some of ruby's build scripts are written in ruby
 #   we purge system ruby later to make sure our final image uses what we just built
@@ -22,9 +23,9 @@ RUN set -eux; \
 	apt-get install -y --no-install-recommends \
 		bison \
 		dpkg-dev \
+    libjemalloc-dev \
 		libgdbm-dev \
 		ruby \
-    libjemalloc-dev  \
 	; \
 	rm -rf /var/lib/apt/lists/*; \
 	\
@@ -86,3 +87,5 @@ ENV BUNDLE_SILENCE_ROOT_WARNING=1 \
 ENV PATH $GEM_HOME/bin:$PATH
 # adjust permissions of a few directories for running "gem install" as an arbitrary user
 RUN mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME"
+
+
