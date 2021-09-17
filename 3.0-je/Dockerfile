@@ -11,7 +11,7 @@ RUN set -eux; \
 
 ENV LANG C.UTF-8
 ENV RUBY_MAJOR 3.0
-ENV RUBY_VERSION 3.0.0
+ENV RUBY_VERSION 3.0.2
 ENV RUBY_DOWNLOAD_SHA256 68bfaeef027b6ccd0032504a68ae69721a70e97d921ff328c0c8836c798f6cb1
 
 # some of ruby's build scripts are written in ruby
