@@ -10,7 +10,7 @@ RUN set -eux; \
 	} >> /usr/local/etc/gemrc
 
 ENV RUBY_MAJOR 2.7
-ENV RUBY_VERSION 2.7.2
+ENV RUBY_VERSION 2.7.4
 ENV RUBY_DOWNLOAD_SHA256 1b95ab193cc8f5b5e59d2686cb3d5dcf1ddf2a86cb6950e0b4bdaae5040ec0d6
 
 # some of ruby's build scripts are written in ruby
