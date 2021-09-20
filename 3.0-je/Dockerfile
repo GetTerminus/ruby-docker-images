@@ -23,7 +23,7 @@ RUN set -eux; \
 	apt-get install -y --no-install-recommends \
 		bison \
 		dpkg-dev \
-    libjemalloc-dev \
+    	libjemalloc-dev \
 		libgdbm-dev \
 		ruby \
 	; \
@@ -88,4 +88,5 @@ ENV PATH $GEM_HOME/bin:$PATH
 # adjust permissions of a few directories for running "gem install" as an arbitrary user
 RUN mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME"
 
-
+# Something was removing libjemalloc-dev
+RUN apt-get update && apt-get install -y libjemalloc-dev
